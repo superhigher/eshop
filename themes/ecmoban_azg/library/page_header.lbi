@@ -1,0 +1,118 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="themes/ecmoban_azg/qq/images/qq.css" rel="stylesheet" type="text/css" />
+<script language='javascript' src='themes/ecmoban_azg/qq/ServiceQQ.js' type='text/javascript' charset='utf-8'></script>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<div class="log">
+<div class="block clearfix ">
+<div class="f_l">
+<a style="cursor: pointer"  
+onClick="window.external.AddFavorite(location.href,document.title);">
+收藏本站
+</a>
+</div>
+
+<div class="f_r">
+{insert_scripts files='utils.js'}
+<font id="ECS_MEMBERZONE">{* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font>
+ 
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="block clearfix" style="position:relative; height:85px; padding-top:8px;">
+ <div class="f_l" ><a href="../index.php" name="top"><img src="../images/logo.gif" /></a></div>
+ <div class="f_l" style=" padding:0px 10px 0 10px "> <img src="../images/logo_r1.gif"> </div> 
+ <div class="f_r" style="">
+ <img src="../images/tel.gif"> </div>
+</div>
+
+
+<div class="block clearfix" style="position:relative">
+
+{if $searchkeywords}
+<div id="topNav" class="clearfix">
+{foreach from=$searchkeywords item=val}
+<a href="search.php?keywords={$val|escape:url}">{$val}</a>
+{/foreach}
+</div> 
+{/if}
+<script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+           alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+<form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" >
+<input name="keywords" type="text" id="keyword"  class="B_input"  value=""  />
+<input name="imageField" type="submit" value="" class="go" style="cursor:pointer;" />
+</form>
+
+
+</div>
+
+
+<div id="mainNav">
+<div class="block clearfix">
+
+
+
+  <a class="a1 a2 {if $navigator_list.config.index eq 1} cur {/if}" href="../index.php"  >{$lang.home} </a>
+  <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+  <img src="../images/meun_line.gif" style="float:left; padding:0 5px;">
+  
+  
+  
+  <ul class="u1" onmouseover="this.className='u1 u1_over'" onmouseout="this.className='u1'" >
+  <a  class="a1 {if $nav.active eq 1} cur {/if}"  href="{$nav.url}" {if $nav.opennew eq 1}target="_blank" {/if}>{$nav.name}</a>
+  
+  
+ 
+  
+  </ul>
+ <!-- {/foreach} -->
+  <img src="../images/meun_line.gif" style="float:left; padding:0 5px;">
+<div class="cart"  >
+ 
+ 
+ 
+
+
+ 
+ {insert_scripts files='transport.js'}
+<div class="buy_car_bg"  id="ECS_CARTINFO" onmouseover="this.className='buy_car_bg ul1_on'" onmouseout="this.className='buy_car_bg'">
+<a href="flow.php" style="color:#FFF">{insert name='cart_info'}</a>
+</div> 
+<a href="flow.php?step=checkout"><img style="float:left; padding-top:9px;"  src="../images/qujiesuan.gif"></a>
+
+
+</div>
+ 
+ 
+ </div>
+ </div>
+
+
+<div class="blank"></div>

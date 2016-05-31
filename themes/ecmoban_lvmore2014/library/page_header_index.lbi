@@ -1,0 +1,172 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script type="text/javascript">
+//收藏本站 bbs.ecmoban.com
+function AddFavorite(title, url) {
+  try {
+      window.external.addFavorite(url, title);
+  }
+catch (e) {
+     try {
+       window.sidebar.addPanel(title, url, "");
+    }
+     catch (e) {
+         alert("抱歉，您所使用的浏览器无法完成此操作。\n\n加入收藏失败，请使用Ctrl+D进行添加");
+     }
+  }
+}
+</script>
+{insert_scripts files='jquery-1.9.1.min.js,jquery.json.js,jquery.SuperSlide.js'}
+{insert_scripts files='transport_jquery.js,utils.js,ecmoban_common.js,default.js'}
+<div class="TopNav">
+	<div class="Center1100px">
+        <span class="f_r">
+        ｜ <a href="./help.php?id=112">帮助中心</a> 
+        ｜ <img align="absmiddle" src="themes/ecmoban_lvmore2014/images/icon_tel.gif"> <font class="f_red">400-000-0000</font>
+        </span>
+        <div class="f_r showflowcat">
+        ｜ <img align="absmiddle" src="themes/ecmoban_lvmore2014/images/icon_cart.gif"> <a href="flow.php">购物车</a>
+        {insert name='cart_info'}
+      	</div>
+    	<span class="f_r">
+        	<font id="ECS_MEMBERZONE"><div id="append_parent"></div>
+        	{insert name='member_info'}
+			</font>
+		｜<a href="user.php?act=order_list" rel="nofollow">我的订单</a> 
+        
+        </span>
+        
+      
+        <img align="absmiddle" src="themes/ecmoban_lvmore2014/images/icon_sc.gif"><a href="Javascript:void(0);" onClick="AddFavorite(document.location.href,'我的网站')" rel="nofollow">收藏本店</a> 
+        ｜ <img align="absmiddle" src="themes/ecmoban_lvmore2014/images/icon_weibo.gif"> <a href="http://weibo.com" target="_blank">官网微博</a>
+        
+	</div>	
+</div>
+<div id="Top" class="Center1100px">
+		<div class="f_l"><a href="./"><img src="themes/ecmoban_lvmore2014/images/logo.gif"></a></div>
+        <div class="search">
+            <div class="search_form">
+            <form id="searchForm" name="searchForm" method="get" action="search.php" onsubmit="return checkSearchForm()">
+                <input name="keywords" type="text" id="keyword" class="search_input" value="">
+                <input name="imageField" type="submit" value="搜索" class="search_submit" style="cursor:pointer;">
+            </form>
+            
+            </div>
+            <div class="hotwords clearfix"><strong>热门搜索：</strong><a href="search.php?keywords=%E6%9D%80%E6%89%8B%E5%8C%85" target="_blank">杀手包</a><a href="search.php?keywords=neverfull" target="_blank">neverfull</a><a href="search.php?keywords=2.55" target="_blank">2.55</a><a href="search.php?keywords=%E9%93%82%E9%87%91%E5%8C%85" target="_blank">铂金包</a><a href="search.php?keywords=%E5%A4%8F%E6%97%A5%E4%BF%83%E9%94%80" target="_blank">夏日促销</a><a href="search.php?keywords=%E8%93%9D%E6%B0%94%E7%90%83" target="_blank">蓝气球</a></div>
+        </div>
+</div>
+<div class="menu" >
+<div id="navMenu" style="width:1100px;">
+<ul class="menu1">
+    <li class="menu1_goods">
+    	<span><a href="#" rel="dropmenu1">所有商品分类</a></span>
+        <ul style="width:860px;top:35px;display:block;background:#fff;">
+        	<!--{foreach from=$categories_pro item=cat name=categories_pro}-->
+             	<dl>
+            		<dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
+                    <!--{foreach from=$cat.cat_id item=child}-->
+                        <!--{foreach from=$child.cat_id item=childer}-->
+                        <dd><a href="{$childer.url}" target="_blank">{$childer.name|escape:html}</a></dd>
+                        <!--{/foreach}-->
+                	<!--{/foreach}-->
+                </dl>
+           <!-- {/foreach} -->
+        </ul>
+    </li>   
+    <li class="menu1_brands">
+    	<span><a href="#" rel="dropmenu2" style="background: none;">全部品牌</a></span>
+        <ul style="width:680px;top:35px;display:none; background:#fff;padding:8px;">
+        	  <!--{foreach from=$brand_list item=brand}-->
+              <div class="menubrand1">
+              	  <a href="{$brand.url}" title="{$brand.brand_name}" rel="$brand.brand_name"><img src="data/brandlogo/{$brand.brand_logo}"  width="99" height="39" /></a>
+              </div>
+              <!--{/foreach}-->
+<!--              <a href="brand-12-c0.html" target="_blank" class="menubrand_lv">LV路易威登</a>-->
+        </ul>
+    </li>      
+    <li><span><a href="index.php" class="cur">首页</a></span></li>
+    <li>
+        <span>
+        	<!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav} -->
+				<a href="{$nav.url}" {if $nav.opennew eq 1} target="_blank" {/if}>{$nav.name}</a>
+            <!-- {/foreach} -->
+        </span>
+    </li>
+    
+</ul>
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript">     
+	$(".showflowcat").hover(
+	function(){
+		$(".car_ul").css("display","block");
+	},
+	function(){
+		$(".car_ul").css("display","none");
+	}
+	
+
+);
+	$(".menu1_goods,.menu1_brands").hover(
+		
+		function(){
+			//alert($(this).children("ul").html());
+			$(this).children("ul").css("display","block");
+	
+		},
+		function(){
+			$(this).children("ul").css("display","none");
+	
+		}
+	);
+
+	var height = 0;
+	var dlwidth = 0;
+	var indexdl= $(".menu1_goods ul dl").length-1;
+	var widthul=$(".menu1_goods ul").width();
+	var index = 0;
+	var dlheight=0;
+	$(".menu1_goods ul dl").each(function(i){
+		dlheight	= 	$(this).outerHeight();
+		dlwidth		+=	$(this).outerWidth()+18;
+		if(dlwidth>widthul)
+		{
+			
+			$(".menu1_goods ul dl").each(function(ii){
+				if(ii<i && ii>=index)
+				{
+					$(this).height(height);
+				}
+			});
+			index=i;
+			dlwidth=0;
+			height = dlheight ;
+			dlheight=0;
+			
+		}
+		if(dlheight>height)
+		{
+			height=dlheight;
+		}
+		if(i==indexdl)
+		{
+			$(".menu1_goods ul dl").each(function(ii){
+				if(ii>=index)
+				{
+					$(this).height(height);
+				}
+			});
+			$(".menu1_goods ul").css("display","none");
+		}
+		
+	});
+
+</script>
+
